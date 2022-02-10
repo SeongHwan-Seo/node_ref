@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mainMapper">
+
+  <!--로그인-->
+  <select id="getLogin">
+   <![CDATA[
+      SELECT 'OK' AS PO_RESULT_MSG FROM DUAL
+    ]]>
+  </select>
+
+
+  <select id="getfrmLogin">
+    <![CDATA[
+      SELECT USER_ID, USER_NM, 'OK' AS CHK_MSG FROM CIS_USER
+      WHERE USER_ID = #{USER_ID}
+    ]]>
+  </select>
+  
+
+  <select id = "getComp">
+  <![CDATA[
+    SELECT COMP_CD, COMP_NM FROM CIS_COMP
+    ORDER BY COMP_CD ASC
+  ]]>
+  </select>
+
+  <select id = "getPlant">
+  <![CDATA[
+    SELECT COMP_CD, PLANT_CD, PLANT_NM FROM CIS_PLANT
+    WHERE COMP_CD = #{COMP_CD}
+  ]]>
+  </select>
+
+  <select id = "getNewHdrNo">
+  <![CDATA[
+    SELECT GMS_FN_GET_SEQUENCES('CHECK_RESULT_HDR_NO', '', '', '') AS RESULT FROM DUAL
+  ]]>
+  </select>
+
+  <update id="test">
+    UPDATE CIS_USER
+        SET USER_NM='관리자'
+     WHERE 
+        USER_ID ='admin'
+  </update>
+</mapper>
